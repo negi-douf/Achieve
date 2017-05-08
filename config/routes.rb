@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
+  resources :blogs, only: [:index, :new, :create]
 
   # このリクエストに対して、
   # blogs の index を呼び出す
-  get "blogs" => "blogs#index"
+  #get "blogs" => "blogs#index"
   
   
   
