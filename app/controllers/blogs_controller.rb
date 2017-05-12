@@ -21,6 +21,17 @@ class BlogsController < ApplicationController
   end
   
   
+  def edit
+    # id を使って対象を特定
+    # 取得するパラメータが一つの場合は SP いらない
+    @blog = Blog.find(params[:id])
+  end
+  
+  
+  def update
+    
+  end
+  
   
   
   ########

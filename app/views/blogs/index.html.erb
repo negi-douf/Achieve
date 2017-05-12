@@ -3,6 +3,10 @@
 <% @blogs.each do |blog| %>
     <p> タイトル: <%= blog.title %></p>
     <p> 本文: <%= blog.content %></p>
+    
+    <!-- blog.id で取得できる -->
+    <%= link_to "ブログを編集する", edit_blog_path(blog.id) %>
+    
 <% end %>
 
 <%= link_to "ブログを作成する", new_blog_path %>
