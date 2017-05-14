@@ -12,12 +12,21 @@ class BlogsController < ApplicationController
   
   
   def create
+    
     # ハッシュとして渡すことになるのかな
     # blogs_params == params[:blog] == {"title": ~, "content": ~}
-    Blog.create(blogs_params)
+    @blog = Blog.new(blogs_params)
     
-    # 作成が完了すると通知と共に一覧画面に飛ばす
-    redirect_to blogs_path, notice: "ブログを作成しました！"
+    # 保存成功時と失敗時で分岐
+    if @blog.save
+      # 作成が完了すると通知と共に一覧画面に飛ばす
+      redirect_to blogs_path, notice: "ブログを作成しました！"
+    
+    else
+      # 入力フォームを再描画
+      render "new"
+    end
+    
   end
   
   
