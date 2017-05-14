@@ -16,8 +16,8 @@ class BlogsController < ApplicationController
     # blogs_params == params[:blog] == {"title": ~, "content": ~}
     Blog.create(blogs_params)
     
-    # 作成が完了すると一覧画面に飛ばす
-    redirect_to blogs_path
+    # 作成が完了すると通知と共に一覧画面に飛ばす
+    redirect_to blogs_path, notice: "ブログを作成しました！"
   end
   
   
@@ -32,7 +32,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog.update(blogs_params)
     
-    redirect_to blogs_path
+    redirect_to blogs_path, notice: "ブログを編集しました！"
   end
   
   
@@ -40,7 +40,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog.destroy
     
-    redirect_to blogs_path
+    redirect_to blogs_path, notice: "ブログを削除しました！"
   end
   
   
