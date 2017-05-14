@@ -1,34 +1,6 @@
-<!-- ブログ作成のページ-->
-
 <!-- 通知-->
 <p><%= notice %></p>
 
-<!-- ここで @blog を指定するのはなぜ？-->
-<!-- create メソッドとは共有できないはずでは？ -->
-<%= form_for(@blog) do |f| %>
-    
-    <% if @blog.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-            
-            <ul>
-                <!-- full_messages は複数のメッセージを表す
-                    ひとつずつ表示していく -->
-                <% @blog.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-            
-        </div>
-    <% end %>
-    
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <br>
-    <%= f.submit %>
-<% end %>
+<h1>ブログ作成</h1>
 
-<%= link_to "ブログ一覧画面に戻る", blogs_path %>
+<%= render "form" %>

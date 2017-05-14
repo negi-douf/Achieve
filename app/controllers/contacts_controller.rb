@@ -6,8 +6,13 @@ class ContactsController < ApplicationController
     
     
     def create
-        Contact.create(contacts_params)
-        redirect_to new_contact_url
+        @contact = Contact.new(contacts_params)
+        if @contact.save
+            redirect_to new_contact_url, notice: "お問い合わせありがとうございました！"
+        
+        else
+            render "new"
+        end
     end
     
     
@@ -19,7 +24,7 @@ class ContactsController < ApplicationController
     ########
     
     def contacts_params
-       params.require(:contact).permit(:name, :email, :content) 
+        params.require(:contact).permit(:name, :email, :content) 
     end
     
 end
