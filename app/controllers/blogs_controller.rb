@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: [:edit, :update, :destroy]
   
   def index
     @blogs = Blog.all
@@ -33,12 +34,10 @@ class BlogsController < ApplicationController
   def edit
     # id を使って対象を特定
     # 取得するパラメータが一つの場合は SP いらない
-    @blog = Blog.find(params[:id])
   end
   
   
   def update
-    @blog = Blog.find(params[:id])
     @blog.update(blogs_params)
     
     redirect_to blogs_path, notice: "ブログを編集しました！"
@@ -46,7 +45,6 @@ class BlogsController < ApplicationController
   
   
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
     
     redirect_to blogs_path, notice: "ブログを削除しました！"
@@ -60,6 +58,12 @@ class BlogsController < ApplicationController
   
   def blogs_params
     params.require(:blog).permit(:title, :content)
+  end
+  
+  
+  # id からブログを特定するメソッド
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
   
 end
