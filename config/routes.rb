@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy]
+  
+  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+    
+    # 確認画面を追加
+    collection do
+      post :confirm
+    end
+  
+  end
   
   resources :contacts, only: [:new, :create]
+  
   
   # このリクエストに対して、
   # blogs の index を呼び出す

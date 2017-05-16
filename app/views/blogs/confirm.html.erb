@@ -1,0 +1,15 @@
+<h3>入力確認</h3>
+
+<%= form_for(@blog) do |f| %>
+  
+  <!-- hidden_field でリクエストパラメータに値を
+  　設定できるようになっている -->
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  
+  <p>タイトル: <%= @blog.title %></p>
+  <p>本文: <%= @blog.content %></p>
+  
+  <%= f.submit "登録する" %>
+  
+<% end %>

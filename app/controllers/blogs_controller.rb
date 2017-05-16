@@ -51,6 +51,11 @@ class BlogsController < ApplicationController
   end
   
   
+  # 確認
+  def confirm
+    @blog = Blog.new(blogs_params)
+  end
+  
   
   ########
   private
