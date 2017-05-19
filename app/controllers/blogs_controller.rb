@@ -1,14 +1,24 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :update, :destroy]
   
+  
+  
   def index
     @blogs = Blog.all
   end
   
   
   def new
-    # この変数は View でも使える
-    @blog = Blog.new
+    if params[:back]
+      
+      # 戻った際のパラメータ維持
+      @blog = Blog.new(blogs_params)
+      
+    else
+      # この変数は View でも使える
+      @blog = Blog.new
+    
+    end
   end
   
   
@@ -54,6 +64,9 @@ class BlogsController < ApplicationController
   # 確認
   def confirm
     @blog = Blog.new(blogs_params)
+    
+    # 空の際は投稿画面に
+    render :new if @blog.invalid?
   end
   
   
@@ -70,5 +83,7 @@ class BlogsController < ApplicationController
   def set_blog
     @blog = Blog.find(params[:id])
   end
+  
+  
   
 end

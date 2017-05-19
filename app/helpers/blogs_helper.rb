@@ -11,6 +11,7 @@ module BlogsHelper
       
       # これが patch blog/edit のパス
       blog_path
+      
     end
       
   end

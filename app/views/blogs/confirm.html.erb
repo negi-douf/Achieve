@@ -13,3 +13,17 @@
   <%= f.submit "登録する" %>
   
 <% end %>
+
+
+<!-- 戻ると入力内容が消えてしまうのを防ぐ
+    戻るというより、フォームで送るという感じ -->
+<%= form_for(@blog, url: new_blog_path, method: "get") do |f| %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  
+  <!-- 戻るボタンからのアクセスであることを
+        明示したいためパラメータを設定 -->
+  <%= f.submit "戻る", name: "back" %>
+  
+<% end %>
+  
