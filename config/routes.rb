@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   
   end
   
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [:new, :create] do
+    
+    # 確認画面
+    collection do
+      post :confirm
+    end
+  end
   
-  
-  # このリクエストに対して、
-  # blogs の index を呼び出す
-  #get "blogs" => "blogs#index"
   
   
   

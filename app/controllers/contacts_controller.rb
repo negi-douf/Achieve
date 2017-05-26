@@ -1,7 +1,11 @@
 class ContactsController < ApplicationController
     
     def new
-        @contact = Contact.new
+        if params[:back]
+            @contact = Contact.new(contacts_params)
+        else
+            @contact = Contact.new
+        end
     end
     
     
@@ -16,6 +20,13 @@ class ContactsController < ApplicationController
     end
     
     
+    
+    def confirm 
+        @contact = Contact.new(contacts_params)
+        
+        # validates に引っかかった場合は new へ
+        render :new if @contact.invalid?
+    end
     
     
     
