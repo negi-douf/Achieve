@@ -12,7 +12,10 @@ class ContactsController < ApplicationController
     def create
         @contact = Contact.new(contacts_params)
         if @contact.save
-            redirect_to new_contact_url, notice: "お問い合わせありがとうございました！"
+            
+            # フラッシュメッセージの設定
+            flash[:success] = "お問い合わせが完了しました！"
+            redirect_to root_path
         
         else
             render "new"

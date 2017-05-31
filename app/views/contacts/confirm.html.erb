@@ -1,29 +1,33 @@
-<h3>確認画面</h3>
-
-<%= form_for(@contact) do |f| %>
+<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
   
-  <!-- hidden_field で値を受け取れるように -->
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :content %>
+  <h3>入力確認！！！！！</h3>
   
-  <!-- 出力 -->
-  <p>Name: <%= @contact.name %></p>
-  <p>Email: <%= @contact.email %></p>
-  <p>Content: <%= @contact.content %></p>
+  <%= form_for(@contact) do |f| %>
+    
+    <!-- hidden_field で値を受け取れるように -->
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :content %>
+    
+    <!-- 出力 -->
+    <p>Name: <%= @contact.name %></p>
+    <p>Email: <%= @contact.email %></p>
+    <p>Content: <%= @contact.content %></p>
+    
+    <%= f.submit "これでいく！！！！", class:"btn btn-primary btn-block" %>
+    
+  <% end %>
   
-  <%= f.submit "登録する" %>
   
-<% end %>
-
-
-
-<%= form_for(@contact, url: new_contact_url, method: "get") do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :content %>
   
-  <!-- 戻るボタンからのアクションであることを明示 -->
-  <%= f.submit "戻る", name: "back" %>
+  <%= form_for(@contact, url: new_contact_url, method: "get") do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :content %>
+    
+    <!-- 戻るボタンからのアクションであることを明示 -->
+    <%= f.submit "やっぱやめる！！！", name: "back", class:"btn btn-default btn-block" %>
+    
+  <% end %>
   
-<% end %>
+</div>
