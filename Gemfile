@@ -46,3 +46,7 @@ end
 
 # Use Bootstrap
 gem "twitter-bootstrap-rails"
+
+
+# Use jQuery
+gem "jquery-turbolinks"
