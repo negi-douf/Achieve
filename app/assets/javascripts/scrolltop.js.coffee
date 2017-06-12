@@ -17,10 +17,10 @@ ready = ->
     else
       element.fadeOut()
     
-    # クリックされたらゆっくり上まで戻る
-    # scrollTop: 0 は一番上までという意味
-    $(document).on "click", "#move-page-top", ->
-      $("html, body").animate( (scrollTop: 0), "slow")
+  # クリックされたらゆっくり上まで戻る
+  # scrollTop: 0 は一番上までという意味
+  $(document).on "click", "#move-page-top", ->
+    $("html, body").animate( {scrollTop: 0}, "slow")
 
 
 # ここで ready するメソッドを指定してるのか
