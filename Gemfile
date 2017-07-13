@@ -50,3 +50,7 @@ gem "twitter-bootstrap-rails"
 
 # Use jQuery
 gem "jquery-turbolinks"
+
+
+# to Login
+gem "devise"
