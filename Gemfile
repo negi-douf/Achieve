@@ -55,5 +55,9 @@ gem "jquery-turbolinks"
 
 # to print errors on server
 gem "rails_12factor", group: :production
+
 # to Login
 gem "devise"
+
+# to SeedData
+gem "faker"

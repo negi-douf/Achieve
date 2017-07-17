@@ -28,9 +28,11 @@ class BlogsController < ApplicationController
     # ハッシュとして渡すことになるのかな
     # blogs_params == params[:blog] == {"title": ~, "content": ~}
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     
     # 保存成功時と失敗時で分岐
     if @blog.save
+      
       # 作成が完了すると通知と共に一覧画面に飛ばす
       redirect_to blogs_path, notice: "ブログを作成しました！"
     
