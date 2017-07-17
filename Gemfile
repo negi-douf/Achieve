@@ -52,6 +52,11 @@ gem "twitter-bootstrap-rails"
 gem "jquery-turbolinks"
 
 
+<<<<<<< HEAD
 
 # to print errors on server
 gem "rails_12factor", group: :production
+=======
+# to Login
+gem "devise"
+>>>>>>> develop
