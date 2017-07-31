@@ -1,29 +1,32 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
-    
+
     # 確認画面を追加
     collection do
       post :confirm
     end
-  
+
   end
-  
+
   resources :contacts, only: [:new, :create] do
-    
+
     # 確認画面
     collection do
       post :confirm
     end
   end
-  
-  
+
+
   # トップページ
   root "top#index"
-  
-  
-  
+
+  #letter_opener_web の route
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
