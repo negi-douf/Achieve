@@ -44,7 +44,7 @@ header ul:after {
     width: 100%;
     background-size: cover;
     background-image: url("header.jpg");
-    
+
     /* 背景画像のスクロールOFF */
     background-attachment: fixed;
 }
