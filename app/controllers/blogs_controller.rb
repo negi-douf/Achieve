@@ -52,14 +52,12 @@ class BlogsController < ApplicationController
 
   def update
     @blog.update(blogs_params)
-
     redirect_to blogs_path, notice: "ブログを編集しました！"
   end
 
 
   def destroy
     @blog.destroy
-
     redirect_to blogs_path, notice: "ブログを削除しました！"
   end
 
