@@ -1,5 +1,6 @@
 <% @poems.each do |poem| %>
-  <h4><%= poem.title %></h4>
-  <p><%= poem.content %></p>
+  <%= poem.title %>
+  <%= poem.content %>
+  <%= link_to "show", poem_path(poem.id) %>
   <br>
 <% end %>
