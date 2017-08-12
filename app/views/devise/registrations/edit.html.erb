@@ -8,6 +8,11 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
   <% if @user.provider.blank? %>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -32,6 +37,7 @@
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
   <% end %>
+  <br>
 
   <div class="field">
     <%= profile_img(@user) if profile_img(@user) %>
