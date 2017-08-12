@@ -7,12 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # 配列を代入
-  PERMISSIBLE_ATTRIBUTES = %i(name)
+  PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
 
-
-
-  
   protected
 
   # Devise 専用のストロングパラメータ
