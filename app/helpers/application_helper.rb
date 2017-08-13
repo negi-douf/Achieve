@@ -2,6 +2,8 @@ module ApplicationHelper
   require "mini_magick"
 
   def profile_img(user)
+    return image_tag(user.avatar, alt: user.name, :size => "50x50") if user.avatar?
+
     unless user.provider.blank?
       img_url = user.image_url
     else
