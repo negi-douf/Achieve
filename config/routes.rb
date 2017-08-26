@@ -6,21 +6,15 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
 
-    # 確認画面を追加
-    collection do
-      post :confirm
-    end
-
+  resources :blogs do
+    resources :comments
+    # 確認画面
+    post :confirm, on: :collection
   end
 
   resources :contacts, only: [:new, :create] do
-
-    # 確認画面
-    collection do
-      post :confirm
-    end
+    post :confirm, on: :collection
   end
 
 
@@ -33,7 +27,6 @@ Rails.application.routes.draw do
   end
 
   resources :poems, only: [:index, :show]
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

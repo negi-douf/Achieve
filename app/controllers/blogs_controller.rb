@@ -71,6 +71,13 @@ class BlogsController < ApplicationController
   end
 
 
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+  end
+
+
+  
   private
 
   def blogs_params
