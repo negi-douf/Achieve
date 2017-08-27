@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_blog, only: [:edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
 
 
@@ -45,8 +45,7 @@ class BlogsController < ApplicationController
 
 
   def edit
-    # id を使って対象を特定
-    # 取得するパラメータが一つの場合は SP いらない
+    # 取得するパラメータが一つの場合は SP はいらない
   end
 
 
@@ -77,7 +76,7 @@ class BlogsController < ApplicationController
   end
 
 
-  
+
   private
 
   def blogs_params
