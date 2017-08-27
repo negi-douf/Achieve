@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit, :update, :delete]
+
   def create
     # Blog をパラメータの値から探し出し、Blog に紐づく comments として build
     @comment = current_user.comments.build(comment_params)
@@ -15,9 +17,30 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    set_blog
+  end
+
+  def update
+    @blog.update(blogs_params)
+    redirect_to blogs_path, notice: "ブログを編集しました！"
+  end
+
+  def delete
+  end
+
+
   private
     # ストロングパラメーター
     def comment_params
       params.require(:comment).permit(:blog_id, :content)
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
+    def set_blog
+      @blog = @comment.blog
     end
 end
