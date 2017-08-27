@@ -1,15 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :delete]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     # Blog をパラメータの値から探し出し、Blog に紐づく comments として build
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
     # クライアント要求に応じてフォーマットを変更
-    # 投稿の成功と失敗で分岐？
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました。' }
+        format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました！' }
         format.js { render :index }
       else
         format.html { render :new }
@@ -18,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    set_blog
+    @blog = @comment.blog
   end
 
   def update
@@ -26,7 +25,15 @@ class CommentsController < ApplicationController
     redirect_to blogs_path, notice: "ブログを編集しました！"
   end
 
-  def delete
+  def destroy
+    respond_to do |format|
+      if @comment.delete
+        format.html { redirect_to blog_path(@blog), notice: "コメントを削除しました！" }
+        format.js { render :index }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
 
@@ -38,9 +45,5 @@ class CommentsController < ApplicationController
 
     def set_comment
       @comment = Comment.find(params[:id])
-    end
-
-    def set_blog
-      @blog = @comment.blog
     end
 end

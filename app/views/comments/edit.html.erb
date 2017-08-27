@@ -3,5 +3,6 @@
     <p><%= notice %></p>
     <h1>コメント編集</h1>
     <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+    <%= link_to '戻る', blog_path(@blog) %>
   </div>
 </div>
