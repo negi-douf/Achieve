@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
@@ -17,6 +21,9 @@ Rails.application.routes.draw do
     post :confirm, on: :collection
   end
 
+  resources :users, only: [:index]
+
+  resources :relationships, only: [:create, :destroy]
 
   # トップページ
   root "top#index"
