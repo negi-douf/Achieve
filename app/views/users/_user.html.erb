@@ -1,0 +1,7 @@
+<div class="container-child col-md-4 col-sm-6 col-xs-6 ">
+  <%= link_to show_image(user), user_path(user) %>
+  <%= link_to user.email, user_path(user) %>
+
+  <!-- フォローのボタンに user を渡す -->
+  <%= render 'users/follow_form', user: user %>
+</div>

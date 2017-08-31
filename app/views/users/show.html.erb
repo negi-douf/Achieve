@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>ユーザ詳細</h2>
+  <br />
+  <div class="col col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <%= show_image(@user) %>
+    <h4>ユーザ名: <%= @user.name %></h4>
+    <h4>Email: <%= @user.email %></h4>
+    <br />
+
+    <div class="row">
+      <h3>フォローユーザ</h3>
+      <% @user.followed_users.each do |following| %>
+        <%= render "users/user", user: following %>
+      <% end %>
+    </div>
+    <br />
+
+    <div class="row">
+      <h3>フォロワー</h3>
+      <% @user.followers.each do |follower| %>
+        <%= render "users/user", user: follower %>
+      <% end %>
+    </div>
+    <br />
+
+  </div>
+</div>
