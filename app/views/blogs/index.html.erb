@@ -12,8 +12,8 @@
       <div class="row">
 
         <div class="avatar">
-          <%= show_image(blog.user) %>
-          <%= blog.user.name %>さんが投稿しました
+          <%= link_to show_image(blog.user), user_path(blog.user) %>
+          <%= link_to blog.user.name, user_path(blog.user) %>さんが投稿しました
         </div>
 
         <%= link_to blog_path(blog) do %>
