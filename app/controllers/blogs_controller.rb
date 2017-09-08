@@ -93,7 +93,7 @@ class BlogsController < ApplicationController
   # 自分の投稿したブログしか編集・削除できないようにする
   def correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
+    unless @user.id == current_user.id
       redirect_to blogs_path, notice: "アクセスできませんでした。"
     end
   end

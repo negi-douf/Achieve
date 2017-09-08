@@ -3,6 +3,7 @@
 <head>
   <!-- for pusher -->
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
   <title>Achieve</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true,  :debug => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :debug => true %>
@@ -12,17 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ポップアップ -->
-  <script>
-    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
-      encrypted: true,
-      cluster: 'ap1'
-    });
+  <% if user_signed_in? %>
+    <script>
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+        encrypted: true,
+        cluster: 'ap1'
+      });
 
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('comment_created', function(data) {
-      alert(data.message);
-    });
-  </script>
+      var channel = pusher.subscribe('user_<% current_user.id %>_channel');
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+    </script>
+  <% end %>
+
 </head>
 
 

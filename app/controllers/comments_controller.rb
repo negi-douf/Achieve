@@ -10,9 +10,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました！' }
         format.js { render :index }
-        Pusher.trigger('test_channel', 'comment_created', {
-          message: 'あなたの作成したブログにコメントが投稿されました'
-        })
+        @comment.pusher_trigger(current_user)
       else
         format.html { render :new }
       end
