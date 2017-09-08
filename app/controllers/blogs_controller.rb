@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :destroy]
 
 
   def index
@@ -90,5 +90,12 @@ class BlogsController < ApplicationController
   end
 
 
+  # 自分の投稿したブログしか編集・削除できないようにする
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to blogs_path, notice: "アクセスできませんでした。"
+    end
+  end
 
 end
