@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- for pusher -->
-  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-
   <title>Achieve</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true,  :debug => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :debug => true %>
   <%= csrf_meta_tags %>
-
   <!-- スマホ・タブレットでも表示が圧縮されないように -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- for pusher -->
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 
   <!-- ポップアップ -->
   <% if user_signed_in? %>
@@ -20,7 +19,7 @@
         cluster: 'ap1'
       });
 
-      var channel = pusher.subscribe('user_<% current_user.id %>_channel');
+      var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
       channel.bind('comment_created', function(data) {
         alert(data.message);
       });
