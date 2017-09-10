@@ -5,17 +5,14 @@ class CommentsController < ApplicationController
     # Blog をパラメータの値から探し出し、Blog に紐づく comments として build
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
-    @notification = @comment.notifications.build(user_id: @blog.user.id )
+    #@notification = @comment.notifications.build(user_id: @blog.user.id )
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
         format.html { redirect_to blog_path(@blog), notice: 'コメントを投稿しました！' }
         format.js { render :index }
-        unless @comment.blog.user_id == current_user.id
-          Pusher.trigger("user_#{@comment.blog.user_id}_channel", 'comment_created', {
-            message: 'あなたの作成したブログにコメントが付きました'
-          })
-        end
+        # pusher
+        @comment.pusher_trigger(current_user)
       else
         format.html { render :new }
       end
