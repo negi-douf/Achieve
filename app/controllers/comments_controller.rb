@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     # Blog をパラメータの値から探し出し、Blog に紐づく comments として build
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
+    @notification = @comment.notifications.build(user_id: @blog.user.id )
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
