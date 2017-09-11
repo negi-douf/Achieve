@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # 配列を代入
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
+  before_action :current_notifications, if: :signed_in?
 
   protected
 
@@ -18,5 +19,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: PERMISSIBLE_ATTRIBUTES)
   end
 
+  def current_notifications
+    @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
+  end
 
 end
