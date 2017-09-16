@@ -5,25 +5,6 @@ header {
     height: 54px;
 }
 
-/* これを書くと上段の画像が表示された */
-.main-header {
-    padding-bottom: 15%;
-    width: 100%;
-    background-size: cover;
-    background-image: image-url("header.jpg");
-
-    /* 背景画像のスクロールOFF */
-    background-attachment: fixed;
-}
-
-/* 中の文字に変化が */
-.main-header img {
-    display: block;
-    margin: 0 auto;
-    width: 25%;
-    padding-top: 15%;
-}
-
 /* 最初の文章の部分 */
 .about {
     background-color: white;
