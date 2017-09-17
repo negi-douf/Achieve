@@ -81,13 +81,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # sendgrid 本番環境用の設定
-  config.action_mailer.default_url_options = { host: 'sheltered-beach-88682.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'app@52.199.230.182' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: "heroku.com",
+    domain: "52.199.230.182",
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
