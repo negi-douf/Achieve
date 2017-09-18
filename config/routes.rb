@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   root "top#index"
 
   # letter_opener_web の route
-  if Rails.env.development?
+  #if Rails.env.development?
+  if :development
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
