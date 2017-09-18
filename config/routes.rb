@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   # トップページ
   root "top#index"
 
-  #letter_opener_web の route
-  if Rails.env.development?
+  # letter_opener_web の route
+  if Rails.env.development? || Rails.env.staging?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
