@@ -14,7 +14,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'app@13.112.86.245 }
+  config.action_mailer.default_url_options = { host: "app@13.112.86.245" }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
