@@ -4,7 +4,7 @@ lock '3.6.0'
 # デプロイするアプリケーション名
 set :application, 'achieve'
 
-# cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
+# cloneするgitのレポジトリ
 set :repo_url, 'https://github.com/negi-douf/Achieve'
 
 # deployするブランチ。デフォルトはmasterなのでなくてもよい。
