@@ -20,7 +20,7 @@ Rails.application.configure do
   {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: "52.199.230.182",
+    domain: "13.112.86.245",
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
