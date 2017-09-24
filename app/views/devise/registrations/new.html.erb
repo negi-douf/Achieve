@@ -6,6 +6,7 @@
 
     <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
       <%= devise_error_messages! %>
+      <br />
 
       <div class="field">
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
@@ -22,6 +23,7 @@
       <div class="field">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
       </div>
+      <br />
 
       <div class="actions">
         <%= f.submit "サインアップ", class: "btn btn-primary btn-block" %>
